@@ -1,7 +1,8 @@
 # System Architecture and Design Decisions
 
 The development methodology consists of two components: the development of the DAG and its deployment.
-![alt text](image.png)
+![alt text](images
+/image.png)
 
 ## 1. Data and Problem Understanding
 
@@ -47,13 +48,15 @@ Answer Correctness: This measures how close the AI’s answer is to the correct 
 
 For the RAG evaluation, two scenarios were considered: a simple retriever and the use of HyDE. No significant differences were observed between the two methods, so the simple method was chosen, as it doesn’t add an extra layer or increase the system’s latency.
 Check notebook 'test_rag_datav2'
-![alt text](image-1.png)
+![alt text](images
+/image-1.png)
 
 ## 8 RAG Strategy selection and deployment
 
 Architecture
 
-![alt text](image-2.png)
+![alt text](images
+/image-2.png)
 
 AWS is selected as the primary provider, hosting a Docker container that runs the bot's logic with LangChain and utilizes FastAPI to handle communication with Slack.
 This will run on the App Runner service, which allows for serverless deployment of Docker containers (just for testing, since it’s more cost-effective).
@@ -80,7 +83,8 @@ terraform plan
 terraform apply
 Deployment finish on AWS
  
- ![alt text](image-3.png)
+ ![alt text](images
+ /image-3.png)
 
 
 OpenAI
@@ -89,15 +93,19 @@ A key is created in OpenAI to access the gpt-4mini model.
 Hugging Face Inferences
 To serve the embeddings, the pre-trained model (notebook Finetune_embedding_soft) has been uploaded to the public Hugging Face repository(https://huggingface.co/CamiloGC93/bge-large-en-v1.5-soft-skills). This model is set up to be deployed on a dedicated instance instead of a container managed by Hugging Face, providing a URL that can be accessed from LangChain.
 
- ![alt text](image-4.png)
+ ![alt text](images
+ /image-4.png)
 
- ![alt text](image-5.png)
+ ![alt text](images
+ /image-5.png)
  
 Qdrant
 To use the Qdrant database, create a free account at https://cloud.qdrant.io/. Then, set up a cluster to get the space and URL where you'll store your vectors.
- ![alt text](image-6.png)
+ ![alt text](images
+ /image-6.png)
 
-![alt text](image-7.png)
+![alt text](images
+/image-7.png)
 
 ## 5. Slack Integration Setup
 
@@ -105,7 +113,8 @@ To use the Qdrant database, create a free account at https://cloud.qdrant.io/. T
 
 1. Go to [Slack API](https://api.slack.com/apps) and log in.
 2. Click "Create New App," provide a name, select a workspace, and click "Create App."
-![alt text](image-8.png)
+![alt text](images
+/image-8.png)
 ### Step 2: Set up Your Bot
 
 1. Under "Add features and functionality," select "Bots."
@@ -115,12 +124,14 @@ To use the Qdrant database, create a free account at https://cloud.qdrant.io/. T
 
 1. Go to "OAuth & Permissions" in the sidebar.
 2. Add bot token scopes like `app_mentions:read`, `chat:write`, and `channels:history`.
-![alt text](image-9.png)
+![alt text](images
+/image-9.png)
 ### Step 4: Install the Bot
 
 1. In the sidebar, go to "Basic Information" and click "Install App."
 2. Authorize the app.
-![alt text](image-10.png)
+![alt text](images
+/image-10.png)
 ### Step 5: Get the Bot Token
 
 1. After installation, go to "OAuth & Permissions."
@@ -129,11 +140,13 @@ To use the Qdrant database, create a free account at https://cloud.qdrant.io/. T
 ## 6. Deploying the API
 
 Once the API is deployed, enable the Events URL with the AppRunner URL.
-![alt text](image-11.png)
+![alt text](images
+/image-11.png)
 
 ### Next Steps
 
 1. Install the app and save changes.
 2. Add the bot to the desired channel.
 3. Mention the bot in the channel to start interacting with it.
-![alt text](image-12.png)
+![alt text](images
+/image-12.png)
