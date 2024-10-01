@@ -63,6 +63,55 @@ Qdrant has been chosen for the database because it offers great performance and 
 Langsmith was selected for monitoring because it works well with Lanchaing, making them a good pair. This setup helps us see the call flow and manage the entire logical process of the model and its responses.
 
 ## 9 Code strucute and folders
+# Project Structure
+
+```bash
+├── Methodology.drawio
+├── README.md
+├── datav2
+│   ├── doc1.pdf
+│   ├── doc2.pdf
+│   ├── doc3.pdf
+│   └── doc4.pdf
+├── evaluation_data
+│   ├── test_data.csv
+│   └── test_datav1.csv
+├── images
+│   ├── image-1.png
+│   ├── image-10.png
+│   ├── image-11.png
+│   ├── image-12.png
+│   ├── image-2.png
+│   ├── image-3.png
+│   ├── image-4.png
+│   ├── image-5.png
+│   ├── image-6.png
+│   ├── image-7.png
+│   ├── image-8.png
+│   ├── image-9.png
+│   └── image.png
+├── infra
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── slack_logic
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   ├── functions.py
+│   │   ├── model_embedding.py
+│   │   ├── requirements.txt
+│   │   └── vectorstore_setup.py
+│   ├── terraform.tfstate
+│   ├── terraform.tfstate.backup
+│   ├── terraform.tfvars
+│   └── variables.tf
+├── notebooks
+│   ├── Finetune_embedding_soft.ipynb
+│   ├── load_embedding.ipynb
+│   ├── load_pdfs.py
+│   └── test_rag_datav2.ipynb
+└── requirements.txt
+
+
 
 
 ## 10 Services implementations
