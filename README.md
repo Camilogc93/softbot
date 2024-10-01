@@ -62,28 +62,31 @@ Qdrant has been chosen for the database because it offers great performance and 
 
 Langsmith was selected for monitoring because it works well with Lanchaing, making them a good pair. This setup helps us see the call flow and manage the entire logical process of the model and its responses.
 
-Services implementations
-Apprunner
+## 9 Code strucute and folders
+
+
+## 10 Services implementations
+
+**Apprunner**
 The AppRunner service was set up locally using Terraform(folder infra) to create the container repository and service, which provides a URL with an internally configured load balancer on port 5000 of the container.
 Prerequisites
 1.	AWS Account: Ensure you have an active AWS account with necessary permissions.
 2.	Terraform Installed: Install Terraform on your local machine.
 3.	Docker Installed: Make sure Docker is installed and your application’s Dockerfile is ready.
 4.	AWS CLI Configured: Set up the AWS CLI with credentials that have permissions to create App Runner services, ECR repositories, IAM roles, etc.
-Terraform code,  understs the folder infra 
-
+Terraform code,  understs the folder **infra **
 
 Deployment process once in the folder
-terraform init
-terraform validate
-terraform plan
-terraform apply
-Deployment finish on AWS
+1.  terraform init
+2.  terraform validate
+3.  terraform plan
+4.  terraform apply
+5.  Deployment finish on AWS
  
  ![alt text](images/image-3.png)
 
 
-OpenAI
+**OpenAI**
 A key is created in OpenAI to access the gpt-4mini model.
 
 Hugging Face Inferences
@@ -93,13 +96,13 @@ To serve the embeddings, the pre-trained model (notebook Finetune_embedding_soft
 
  ![alt text](images/image-5.png)
  
-Qdrant
+**Qdrant**
 To use the Qdrant database, create a free account at https://cloud.qdrant.io/. Then, set up a cluster to get the space and URL where you'll store your vectors.
  ![alt text](images/image-6.png)
 
 ![alt text](images/image-7.png)
 
-## 5. Slack Integration Setup
+## . Slack Integration Setup
 
 ### Step 1: Create a New Slack App
 
@@ -127,14 +130,15 @@ To use the Qdrant database, create a free account at https://cloud.qdrant.io/. T
 1. After installation, go to "OAuth & Permissions."
 2. Copy the "Bot User OAuth Access Token" (`xoxb-...`) for use in your code.
 
-## 6. Deploying the API
+### 6. Deploying the API
 
 Once the API is deployed, enable the Events URL with the AppRunner URL.
 ![alt text](images/image-11.png)
 
-### Next Steps
+### 7 Next Steps
 
 1. Install the app and save changes.
 2. Add the bot to the desired channel.
 3. Mention the bot in the channel to start interacting with it.
 ![alt text](images/image-12.png)
+
