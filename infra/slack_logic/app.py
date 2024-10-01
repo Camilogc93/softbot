@@ -71,7 +71,7 @@ def handle_mentions(body, say):
     mention = f"<@{SLACK_BOT_USER_ID}>"
     text = text.replace(mention, "").strip()
 
-    say("Sure, I'll get right on that!")
+    say("Here is your anwser")
     response = assintan_bot(text)
     say(response)
 

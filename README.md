@@ -232,6 +232,8 @@ To make the system more thoughtful,w e can implement the RAG in an interactive a
 
 
 ## Voice to text
-Slack, by default, transcribes the audio messages sent to our bot into text, so no additional implementation is needed.
+No implemented
 
-To implement this, the Slack file trigger event is used to check if it's an audio file, then an API is called to transcribe the audio, and the text is sent to the prompt.
+There was a failure to review the Slack API to receive the file.
+
+The process should have been to get the file event, check that it was audio, use a voice-to-text service or model, and then feed the result to the beginning of the chain.
