@@ -110,7 +110,21 @@ Langsmith was selected for monitoring because it works well with Lanchaing, maki
 │   ├── load_pdfs.py
 │   └── test_rag_datav2.ipynb
 └── requirements.txt
+```
+#### datav2
+ consists of collected data from the internet and PDF files related to teaching and coaching soft skills. This data **is crucial for the model's output retrieval and answers**. It serves as a foundation for future improvements, including behavior and content updates, as well as the basis for embedding models.
 
+#### valuation_data
+This information comes from the synthetic data generated with **RAGAS** for the evaluation of the RAG, using the knowledge base from the datav2 folder. 
+
+#### infra
+In this folder, you'll find the Terraform code to deploy the container that manages the orchestration logic of the RAG, as well as the code in the slack_logic folder, which includes the files with classes and functions for the RAG's operation.
+
+#### notebooks
+ Finetune_embedding_soft.ipynb:   Training, uploading to the Hugging Face repository, and quantizing the fine-tuned embeddings model, which is deployed as an instance to support the RAG infrastructure.
+│load_embedding.ipynb: Initial embedding upload file from local storage to the vector database in Cloud SAS via Qdrant.
+│load_pdfs.py: fuction helper to read the pdfs files.
+│test_rag_datav2.ipynb: Comparison of the performance of the RAG system, using a basic system and Hype, with results from the evaluation of the methods with **RAGAS**
 
 
 
