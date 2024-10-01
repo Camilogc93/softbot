@@ -11,15 +11,16 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from vectorstore_setup import QdrantManager
 from model_embedding import ModelEmbedding
-
+from langsmith import traceable
 load_dotenv(find_dotenv())
-
+#setup embedings
 embedding_model = ModelEmbedding()
 embeddings=embedding_model.get_embeddings()
-
+#setup database
 qdrant_manager = QdrantManager()
 retriever= qdrant_manager.get_retriever_from_existing(embeddings=embeddings)
-print("confugarionts set")
+
+
 
 RAG_TEMPLATE = """\
     Act as an AI Soft Skills Coach. I will present individuals seeking to improve their soft skills, such as communication, teamwork, leadership, problem-solving, time management, and adaptability. Your task is to offer personalized guidance with practical strategies and actionable steps for enhancing these skills in professional and personal contexts. Use relatable examples and scenarios to anwser the user questions base on the context information. Respond in a simple and easy-to-follow manner.
@@ -50,7 +51,7 @@ rag_sematic_retrieval_chain = (
 
 
 
-
+@traceable
 def assintan_bot(user_input):
 
     return rag_sematic_retrieval_chain.invoke({"question" :user_input })["response"].content

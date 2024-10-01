@@ -33,6 +33,7 @@ The structure of the prompt uses a role-based technique with elements of chain o
 
 ## 6. Metrics
 The metrics used come from the Ragas framework, which is responsible for creating the dataset, and the following metrics were applied to evaluate the RAG.
+
 Faithfulness: This checks if the AI's answer is factually correct based on the information it was given. If everything in the answer comes from the context provided, the answer is considered faithful. Higher scores mean the AI stayed true to the context.
 
 Answer Relevance: This measures if the AI's answer directly addresses the question. It doesn’t care if the answer is factually correct, just whether it is on-topic and complete. A higher score means the AI’s answer is more relevant to the question.
@@ -121,10 +122,15 @@ This information comes from the synthetic data generated with **RAGAS** for the 
 In this folder, you'll find the Terraform code to deploy the container that manages the orchestration logic of the RAG, as well as the code in the slack_logic folder, which includes the files with classes and functions for the RAG's operation.
 
 #### notebooks
- Finetune_embedding_soft.ipynb:   Training, uploading to the Hugging Face repository, and quantizing the fine-tuned embeddings model, which is deployed as an instance to support the RAG infrastructure.
+ Finetune_embedding_soft.ipynb:Training, uploading to the Hugging Face repository, and quantizing the fine-tuned embeddings model, which is deployed as an instance to support the RAG infrastructure.
+
 │load_embedding.ipynb: Initial embedding upload file from local storage to the vector database in Cloud SAS via Qdrant.
-│load_pdfs.py: fuction helper to read the pdfs files.
-│test_rag_datav2.ipynb: Comparison of the performance of the RAG system, using a basic system and Hype, with results from the evaluation of the methods with **RAGAS**
+
+
+load_pdfs.py: fuction helper to read the pdfs files.
+
+
+test_rag_datav2.ipynb: Comparison of the performance of the RAG system, using a basic system and Hype, with results from the evaluation of the methods with **RAGAS**
 
 
 
@@ -205,3 +211,15 @@ Once the API is deployed, enable the Events URL with the AppRunner URL.
 3. Mention the bot in the channel to start interacting with it.
 ![alt text](images/image-12.png)
 
+
+
+## Current limitations and future improvements.
+Right now, the bot lacks a clear data source based on behavior, as its contexts or embeddings come from coaching examples, but they don't generalize to respond to specific behaviors and information styles.
+
+From the RAG side, we could look into other chunking methods that might fit the content of the PDFs or the data source better.
+
+An advanced retrieval method, like a reranker, can be used to optimize information selection in the context of the bot.
+
+The prompt can also be improved by including some examples of questions and their answers to achieve more structured behavior.
+
+To make the system more thoughtful,w e can implement the RAG in an interactive agent that assesses whether the response meets the user's needs. This could function like a series of coaching agents that analyze the content of the responses.
