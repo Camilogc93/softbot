@@ -216,6 +216,8 @@ Once the API is deployed, enable the Events URL with the AppRunner URL.
 ## Current limitations and future improvements.
 Right now, the bot lacks a clear data source based on behavior, as its contexts or embeddings come from coaching examples, but they don't generalize to respond to specific behaviors and information styles.
 
+The Serverless Docker instance has a high cold start time, which may result in the loss of the first message after a period of inactivity. This was implemented for testing purposes; typically, Kubernetes or ECS Fargate is used to host the container.
+
 From the RAG side, we could look into other chunking methods that might fit the content of the PDFs or the data source better.
 
 An advanced retrieval method, like a reranker, can be used to optimize information selection in the context of the bot.
@@ -223,3 +225,9 @@ An advanced retrieval method, like a reranker, can be used to optimize informati
 The prompt can also be improved by including some examples of questions and their answers to achieve more structured behavior.
 
 To make the system more thoughtful,w e can implement the RAG in an interactive agent that assesses whether the response meets the user's needs. This could function like a series of coaching agents that analyze the content of the responses.
+
+
+## Voice to text
+Slack, by default, transcribes the audio messages sent to our bot into text, so no additional implementation is needed.
+
+To implement this, the Slack file trigger event is used to check if it's an audio file, then an API is called to transcribe the audio, and the text is sent to the prompt.
