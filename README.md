@@ -158,6 +158,10 @@ Deployment process once in the folder
 **OpenAI**
 A key is created in OpenAI to access the gpt-4mini model.
 
+
+**Langsmith**
+Metrics service implemented with easy integration with Lanchain. Check out the video to follow the tracing. This service can also be used as a self-manager, but in this case, the SaaS service is used for easier integration.
+
 Hugging Face Inferences
 To serve the embeddings, the pre-trained model (notebook Finetune_embedding_soft) has been uploaded to the public Hugging Face repository(https://huggingface.co/CamiloGC93/bge-large-en-v1.5-soft-skills). This model is set up to be deployed on a dedicated instance instead of a container managed by Hugging Face, providing a URL that can be accessed from LangChain.
 
